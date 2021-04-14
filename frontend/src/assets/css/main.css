@@ -1,0 +1,55 @@
+@charset "UTF-8";
+
+/* 상태 대시보드 : 공통 */
+.state-flex-box{display:flex; justify-content: space-between;}
+.state-flex-box .updateInfo{width:46%;}
+.state-flex-box .etcInfo{display:flex; flex-wrap: wrap; justify-content: space-between; align-items: stretch; width:51%;}
+.dashboard01{display:flex; justify-content: space-between; align-items: center; height:114px; padding:0 15px; color:#fff; text-align:right;}
+.dashboard01+.dashboard01{margin-top:7px;}
+.dashboard01 p{margin-bottom:0; line-height: 1;}
+.dashboard01 .state-name{margin-bottom:0; font-size:15px;}
+.dashboard01 .state-percent{font-size:33px; font-weight:700; text-shadow: 1px 1px 7px rgba(0,0,0,.1);}
+.dashboard01 .state-percent strong{font-size:67px;}
+.dashboard01 .state-count{font-size:13px;}
+.dashboard02{display:flex; flex-flow: column; justify-content: space-between; width:calc((100% - 20px) / 3); height:160px; padding:15px 10px; font-weight:500; letter-spacing: -0.05em;}
+.dashboard02 .name{margin-top:5px; font-size:14px;}
+.dashboard02 .count{font-size:30px; text-align:right; line-height:1;}
+.dashboard03{display:flex; justify-content: space-between; align-items: center; width:100%; height:60px; margin-top:10px; padding:0 5%; font-size:17px; font-weight:500; color:#5a5a5a;}
+.dashboard03 strong{font-size:31px; letter-spacing: -0.06em;}
+.dashboard04{display:flex; flex-flow:column; justify-content: center; width:calc(100% - ((14.35% * 3) + 45px)); height:125px; padding:0 30px; font-weight:500; color:#5a5a5a;}
+.dashboard04 .update-id{display:inline-block; margin-left:15px; color:#43474d;}
+.dashboard04 .v-progress-linear{margin-top:10px; border-radius:30px; box-shadow: 0 0 5px rgba(0,0,0,.14);background:#ececec !important;}
+.dashboard04 .v-progress-linear__background{background:#ececec !important;}
+.dashboard04 .v-progress-linear__determinate{border:5px solid #ececec !important; border-radius:30px;}
+.dashboard05{display:flex; flex-flow: column; justify-content: space-between; width:14.35%; height:125px; margin-left:15px; padding:15px 10px; background:#efefef; font-size:12px; font-weight:500; color:#5a5a5a;}
+.dashboard05 .txt{font-size:18px; text-align:right; line-height:1;}
+.dashboard06{display:flex; flex-flow: column; justify-content: space-between; width:44%; min-height:125px; padding:15px 20px; font-size:12px; color:#5a5a5a; letter-spacing: 0.02em;}
+.dashboard06 .name{font-size:12px; font-weight:900;}
+.dashboard06 .count{font-size:67px; font-weight:700; text-align: right; line-height:1; text-shadow: 1px 1px 7px rgba(0,0,0,.2);}
+.dashboard07{display:flex; flex-flow: column; justify-content: space-between; position:relative; width:calc(56% - 15px); min-height:125px; padding:15px 20px; font-size:12px; color:#fff; letter-spacing: 0.02em;}
+.dashboard07 .name{font-size:12px; font-weight:900;}
+.dashboard07 .count{font-size:67px; font-weight:700; text-align: right; line-height:1;text-shadow: 1px 1px 7px rgba(0,0,0,.2);}
+.dashboard07 .check-list{position:absolute; bottom:15px; left:20px; width:60%; padding:0; overflow:hidden;}
+.dashboard07 .check-list li{float:left; width:50%; margin-top:10px; padding-left:24px; text-indent:-24px;}
+.dashboard07 .check-list li:before{content:""; display:inline-block; width:14px; height:14px; margin-right:10px; background:url(../img/ico-checked.png) no-repeat top left; vertical-align: middle;}
+.dashboard07 .check-list li:nth-of-type(2n+1){clear:left;}
+.dashboard07 .check-list li:nth-of-type(1),
+.dashboard07 .check-list li:nth-of-type(2){margin-top:0;}
+
+/* 상태값 안내 : 홈 */
+.state_guide{display:flex; justify-content: flex-end; margin-bottom:10px;}
+.state_guide .state{display:flex; align-items:center; font-size:10px; color:#a0a0a0;}
+.state_guide .state .txt{display:inline-block; margin-left:8px;}
+.state_guide .state+.state{margin-left:30px;}
+
+/* main layout : 홈 */
+.main-dashboard{display:flex; justify-content: space-between;}
+.main-dashboard-bottom{margin-top:50px;}
+
+/*  */
+.main-label{width:66%;}
+.main-gateway{width:31%;}
+
+.row-class:hover {
+    cursor: pointer;
+}

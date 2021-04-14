@@ -1,0 +1,97 @@
+# see: https://docs.microsoft.com/en-us/azure/devops/pipelines/ecosystems/deploy-linux-vm?view=azure-devops&tabs=java
+variables:
+  isRelease: $[eq(variables['Build.SourceBranch'], 'refs/heads/release')]
+
+# 어떤 branch에서 동작하는 지 표시
+trigger:
+- master
+- release
+
+# build agent pool default가 dtonic꺼 
+# see: https://dev.azure.com/dtonic/_settings/agentpools
+pool:
+  name: default
+
+stages:
+- stage: build
+  jobs:
+  - job: 
+    steps:
+      # node 설치
+    - task: NodeTool@0
+      inputs:
+        versionSpec: '12.x'
+      displayName: 'Install Node.js'
+
+      # npm package 복원
+    - task: Npm@1
+      inputs:
+        command: 'install'
+        workingDir: 'frontend'
+      displayName: 'npm install'
+
+      # vue build
+    - task: Npm@1
+      inputs:
+        command: 'custom'
+        workingDir: 'frontend'
+        customCommand: 'run build-test'
+      displayName: 'vue build'
+
+      # deploy 폴더를 Staging 폴더로 복사    
+      # see: https://docs.microsoft.com/en-us/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml
+      #  - $(Build.SourcesDirectory) 등 사전 정의 변수 설명
+    - task: CopyFiles@2
+      inputs:
+        SourceFolder: '$(Build.SourcesDirectory)/deploy'
+        Contents: '**'
+        TargetFolder: '$(Build.ArtifactStagingDirectory)'
+        
+      # dist 폴더를 Staging 폴더로 복사
+    - task: CopyFiles@2
+      inputs:
+        SourceFolder: '$(Build.SourcesDirectory)/frontend/dist'
+        Contents: '**'
+        TargetFolder: '$(Build.ArtifactStagingDirectory)/aims-ui/dist'
+
+    - task: Npm@1
+      inputs:
+        command: 'custom'
+        workingDir: 'frontend'
+        customCommand: 'run build-cloud'
+      displayName: 'vue build'
+
+
+      # dist 폴더를 Staging 폴더로 복사
+    - task: CopyFiles@2
+      inputs:
+        SourceFolder: '$(Build.SourcesDirectory)/frontend/dist'
+        Contents: '**'
+        TargetFolder: '$(Build.ArtifactStagingDirectory)/cloud-aims-ui/dist'
+
+
+      # deploy agent에서 사용하기 위해서 drop-ArtifactName으로 Publish
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        ArtifactName: 'drop'
+        publishLocation: 'Container'
+
+- stage: release
+  condition: and(succeeded(), eq(variables.isRelease, true))
+  jobs:    
+  - deployment: deploySoluMDev
+    # 배포할 Envornment 
+    environment: 
+      name: 'SoluM Dev'
+      resourceType: VirtualMachine
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - task: DockerCompose@0
+            inputs:
+              containerregistrytype: 'Container Registry'
+              dockerRegistryEndpoint: 'dtonic registry'
+              dockerComposeFile: '$(Agent.BuildDirectory)/drop/docker-compose.yml'
+              action: 'Run services'

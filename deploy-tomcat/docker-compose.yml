@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+
+  amis-ui:
+    build: 
+      context: aims-ui
+    image: registry.dtonic.io/aims-ui:tomcat
+    ports:
+      - 9993:8080
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+          constraints: [node.hostname == dc-00-02.dtonic.io]

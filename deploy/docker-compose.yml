@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+
+  amis-ui:
+    build: 
+      context: aims-ui
+    image: registry.dtonic.io/aims-ui
+    ports:
+      - 9091:80
+      - 9443:443
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+          constraints: [node.hostname == dc-00-02.dtonic.io]
+  
+  amis-cloud-ui:
+    build: 
+      context: cloud-aims-ui
+    image: registry.dtonic.io/cloud-aims-ui
+    ports:
+      - 9092:80
+      - 9444:443
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+          constraints: [node.hostname == dc-00-02.dtonic.io]
