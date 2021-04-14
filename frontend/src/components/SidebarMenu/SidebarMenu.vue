@@ -355,4 +355,5 @@ export default {
 .theme--light.v-card {
   background: #001E38 !important;
 }
+
 </style>
