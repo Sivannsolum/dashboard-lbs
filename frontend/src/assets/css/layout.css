@@ -72,7 +72,8 @@ body .wrapper {
 /*** 좌측메뉴 ***/
 .navigation {
   position: relative;
-  width: 280px;
+  /* width: 280px; */
+  width: 320px;
   background: #09263f;
   transition: width 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 10;

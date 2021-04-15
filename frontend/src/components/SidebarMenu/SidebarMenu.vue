@@ -5,83 +5,128 @@
     :style="[{'max-width': sidebarWidth}]"
     @mouseleave="onMouseLeave"
   >
-    <slot name="header" />
-    <div
-      class="vsm--scroll-wrapper"
-      :style="isCollapsed && [rtl ? {'margin-left': '-17px'} : {'margin-right': '-17px'}]"
-    >
-      <div
-        class="vsm--list"
-        :style="isCollapsed && {'width': widthCollapsed}"
-      >
-        <sidebar-menu-item
-          v-for="(item, index) in menu"
-          :key="index"
-          :item="item"
-          :is-collapsed="isCollapsed"
-          :active-show="activeShow"
-          :show-one-child="showOneChild"
-          :show-child="showChild"
-          :rtl="rtl"
-          :mobile-item="mobileItem"
-          :disable-hover="disableHover"
-          @set-mobile-item="setMobileItem"
-          @unset-mobile-item="unsetMobileItem"
-        >
-          <slot
-            slot="dropdown-icon"
-            name="dropdown-icon"
-          />
-        </sidebar-menu-item>
-      </div>
-      <div
-        v-if="isCollapsed"
-        class="vsm--mobile-item"
-        :style="mobileItemStyle.item"
-      >
-        <sidebar-menu-item
-          v-if="mobileItem"
-          :item="mobileItem"
-          :is-mobile-item="true"
-          :mobile-item-style="mobileItemStyle"
-          :is-collapsed="isCollapsed"
-          :show-child="showChild"
-          :rtl="rtl"
-        >
-          <slot
-            slot="dropdown-icon"
-            name="dropdown-icon"
-          />
-        </sidebar-menu-item>
-        <transition name="slide-animation">
-          <div
-            v-if="mobileItem"
-            class="vsm--mobile-bg"
-            :style="mobileItemStyle.background"
-          />
-        </transition>
-      </div>
-    </div>
-    <slot name="footer" />
-    <button
-      v-if="!hideToggle"
-      class="vsm--toggle-btn"
-      :class="{'vsm--toggle-btn_slot' : $slots['toggle-icon']}"
-      @click="onToggleClick"
-    >
-      <slot name="toggle-icon" />
-    </button>
+      <v-app id="inspire">
+    <v-card>
+      <v-tabs vertical>
+        <v-tab>
+          ESL
+        </v-tab>
+        <v-tab>
+          LBS
+        </v-tab>
+        <v-tab>
+          Touch LCD
+        </v-tab>
+        <v-tab>
+          Store &#38; User
+        </v-tab>
+        <v-tab-item>
+          <v-card flat>
+            <slot name="header" />
+              <div
+                class="vsm--scroll-wrapper"
+                :style="isCollapsed && [rtl ? {'margin-left': '-17px'} : {'margin-right': '-17px'}]"
+              >
+                <div
+                  class="vsm--list"
+                  :style="isCollapsed && {'width': widthCollapsed}"
+                >
+                  <sidebar-menu-item
+                    v-for="(item, index) in menu"
+                    :key="index"
+                    :item="item"
+                    :is-collapsed="isCollapsed"
+                    :active-show="activeShow"
+                    :show-one-child="showOneChild"
+                    :show-child="showChild"
+                    :rtl="rtl"
+                    :mobile-item="mobileItem"
+                    :disable-hover="disableHover"
+                    @set-mobile-item="setMobileItem"
+                    @unset-mobile-item="unsetMobileItem"
+                  >
+                    <slot
+                      slot="dropdown-icon"
+                      name="dropdown-icon"
+                    />
+                  </sidebar-menu-item>
+                </div>
+                <div
+                  v-if="isCollapsed"
+                  class="vsm--mobile-item"
+                  :style="mobileItemStyle.item"
+                >
+                  <sidebar-menu-item
+                    v-if="mobileItem"
+                    :item="mobileItem"
+                    :is-mobile-item="true"
+                    :mobile-item-style="mobileItemStyle"
+                    :is-collapsed="isCollapsed"
+                    :show-child="showChild"
+                    :rtl="rtl"
+                  >
+                    <slot
+                      slot="dropdown-icon"
+                      name="dropdown-icon"
+                    />
+                  </sidebar-menu-item>
+                  <transition name="slide-animation">
+                    <div
+                      v-if="mobileItem"
+                      class="vsm--mobile-bg"
+                      :style="mobileItemStyle.background"
+                    />
+                  </transition>
+                </div>
+              </div>
+            <slot name="footer" />
+            <button
+              v-if="!hideToggle"
+              class="vsm--toggle-btn"
+              :class="{'vsm--toggle-btn_slot' : $slots['toggle-icon']}"
+              @click="onToggleClick"
+            >
+              <slot name="toggle-icon" />
+            </button>
+          </v-card>
+        </v-tab-item>
+        <v-tab-item>
+          <v-card flat>
+            <lbs-sidebar-menu />
+          </v-card>
+        </v-tab-item>
+        <v-tab-item>
+          <v-card flat>
+            <v-card-text>
+              <div>
+                3
+              </div>
+            </v-card-text>
+          </v-card>
+        </v-tab-item>
+        <v-tab-item>
+          <v-card flat>
+            <v-card-text>
+              4
+            </v-card-text>
+          </v-card>
+        </v-tab-item>
+      </v-tabs>
+    </v-card>
+  </v-app>
   </div>
 </template>
 
 <script>
 import SidebarMenuItem from '@/components/SidebarMenu/SidebarMenuItem.vue'
+import LbsSidebarMenu from '@/components/SidebarMenu/LbsSidebarMenu.vue'
 import { animationMixin } from '@/components/mixin'
 
 export default {
   name: 'SidebarMenu',
   components: {
-    SidebarMenuItem
+    SidebarMenuItem,
+    LbsSidebarMenu
   },
   mixins: [animationMixin],
   props: {
@@ -275,4 +320,42 @@ export default {
 
 <style lang="scss">
 @import '@/scss/vue-sidebar-menu';
+.v-tabs--vertical > .v-tabs-bar .v-tab {
+  transform: rotate(270deg);
+    left: -54px;
+    min-height: 150px;
+    min-width: 150px;
+}
+.v-tabs-bar__content{
+  width: 46px;
+}
+.v-sheet.v-card {
+    border-radius: 0;
+}
+.v-sidebar-menu .vsm--link_level-1.vsm--link_exact-active,
+.v-sidebar-menu .vsm--link_level-1.vsm--link_active {
+    box-shadow: 7px 0px 0px 0px #697a8a inset!important;
+}
+.theme--light.v-tabs-items {
+  background-color: #001E38!important;
+}
+</style>
+<style scoped>
+.theme--light.v-tabs > .v-tabs-bar .v-tab:not(.v-tab--active) {
+  background: #e2e2e2 !important;
+  font-weight: bold;
+}
+.v-tab {
+  letter-spacing: 0 !important;
+}
+.v-tab--active {
+  font-weight: bolder !important;
+  background: #001e38 !important;
+  height: 15% !important;
+  color: white !important;
+}
+.theme--light.v-card {
+  background: #001E38 !important;
+}
+
 </style>
