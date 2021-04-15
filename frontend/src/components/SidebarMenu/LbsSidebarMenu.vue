@@ -4,15 +4,15 @@
       <p>
         <span
           class="white--text text-uppercase"
-          style="font-size: x-small; font-weight: bold"
+          style="color: white; font-size: small; font-weight: bold;margin-left: 7px;"
           >View Mode</span
         >
       </p>
       <v-row>
-        <v-checkbox dark label="Zone" class="d-inline-block"></v-checkbox>
-        <v-checkbox dark label="Interior" class="d-inline-block"></v-checkbox>
-        <v-checkbox dark label="Text" class="d-inline-block"></v-checkbox>
-        <v-checkbox dark label="Facility" class="d-inline-block"></v-checkbox>
+        <v-checkbox dark label="Zone" class="my-checkbox" style="margin-left: 24px;"></v-checkbox>
+        <v-checkbox dark label="Interior" class="my-checkbox"></v-checkbox>
+        <v-checkbox dark label="Text" class="my-checkbox"></v-checkbox>
+        <v-checkbox dark label="Facility" class="my-checkbox"></v-checkbox>
       </v-row>
 
       <div class="text-center">
@@ -34,10 +34,8 @@
         <v-btn class="ma-2" outlined color="white"> Setting </v-btn>
       </div>
       <br />
-      <br />
 
       <v-divider></v-divider>
-
       <v-list style="background: transparent">
         <v-list-group style="overflow-y: auto">
           <template v-slot:activator>
@@ -93,7 +91,8 @@
   </v-card>
 </template>
 <style scoped>
-.theme--light.v-label {
+
+::v-deep.theme--dark.v-label {
   color: #001e38 !important;
   font-size: small;
   left: -7px;
@@ -102,7 +101,7 @@
 .v-btn:not(.v-btn--round).v-size--default {
   min-width: 212px;
 }
-.v-application .pa-2 {
+::v-deep.v-application .pa-2 {
   padding: 4px !important;
 }
 
@@ -117,4 +116,39 @@
   transition: inherit;
   color: #c1c1c1 !important;
 }
+::v-deep.v-list .v-list-item--active .v-icon {
+  color: white !important;
+}
+::v-deep .v-list .v-list-item .v-icon {
+  color: white;
+}
+
+::v-deep .v-input--selection-controls__input {
+    /* color: inherit;
+    display: inline-flex;
+    flex: 0 0 auto; */
+    height: 0px !important;
+    /* position: relative;
+    transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+    transition-property: transform; */
+    width: 0px !important;
+    /* -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; */
+    margin-right: 24px !important;
+
+}
+::v-deep .my-checkbox .v-label {
+ font-size: 13px;
+    left: -14px !important;
+}
+
+::v-deep .v-icon.v-icon {
+  color: #c1c1c1;
+  font-size: var(--font20);
+}
+/* ::v-deep.v-icon  .v-checkbox-marked .theme--dark .white--text{
+  background: red !important;
+} */
 </style>
