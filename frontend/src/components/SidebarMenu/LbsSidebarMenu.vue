@@ -4,12 +4,22 @@
       <p>
         <span
           class="white--text text-uppercase"
-          style="color: white; font-size: small; font-weight: bold;margin-left: 7px;"
+          style="
+            color: white;
+            font-size: small;
+            font-weight: bold;
+            margin-left: 7px;
+          "
           >View Mode</span
         >
       </p>
       <v-row>
-        <v-checkbox dark label="Zone" class="my-checkbox" style="margin-left: 24px;"></v-checkbox>
+        <v-checkbox
+          dark
+          label="Zone"
+          class="my-checkbox"
+          style="margin-left: 24px"
+        ></v-checkbox>
         <v-checkbox dark label="Interior" class="my-checkbox"></v-checkbox>
         <v-checkbox dark label="Text" class="my-checkbox"></v-checkbox>
         <v-checkbox dark label="Facility" class="my-checkbox"></v-checkbox>
@@ -91,7 +101,6 @@
   </v-card>
 </template>
 <style scoped>
-
 ::v-deep.theme--dark.v-label {
   color: #001e38 !important;
   font-size: small;
@@ -124,24 +133,13 @@
 }
 
 ::v-deep .v-input--selection-controls__input {
-    /* color: inherit;
-    display: inline-flex;
-    flex: 0 0 auto; */
-    height: 0px !important;
-    /* position: relative;
-    transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
-    transition-property: transform; */
-    width: 0px !important;
-    /* -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none; */
-    margin-right: 24px !important;
-
+  height: 0px !important;
+  width: 0px !important;
+  margin-right: 24px !important;
 }
 ::v-deep .my-checkbox .v-label {
- font-size: 13px;
-    left: -14px !important;
+  font-size: 13px;
+  left: -14px !important;
 }
 
 ::v-deep .v-icon.v-icon {
@@ -150,23 +148,23 @@
 }
 
 ::-webkit-scrollbar {
-    width: 8px;
-    height: 2px;
+  width: 10px;
+  height: 2px;
 }
 /* Track */
 ::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-    -webkit-border-radius: 6px;
-    border-radius: 6px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
 }
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    -webkit-border-radius: 6px;
-    border-radius: 6px;
-    background:#777575;
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  background: grey;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
 }
 ::-webkit-scrollbar-thumb:window-inactive {
-    background: #777575;
+  background: darkgrey;
 }
 </style>
