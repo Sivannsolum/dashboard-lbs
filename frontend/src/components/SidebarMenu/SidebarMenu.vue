@@ -79,22 +79,20 @@
                   </transition>
                 </div>
               </div>
-    <slot name="footer" />
-    <button
-      v-if="!hideToggle"
-      class="vsm--toggle-btn"
-      :class="{'vsm--toggle-btn_slot' : $slots['toggle-icon']}"
-      @click="onToggleClick"
-    >
-      <slot name="toggle-icon" />
-    </button>
+            <slot name="footer" />
+            <button
+              v-if="!hideToggle"
+              class="vsm--toggle-btn"
+              :class="{'vsm--toggle-btn_slot' : $slots['toggle-icon']}"
+              @click="onToggleClick"
+            >
+              <slot name="toggle-icon" />
+            </button>
           </v-card>
         </v-tab-item>
         <v-tab-item>
           <v-card flat>
-            <div>
-              2
-            </div>
+            <lbs-sidebar-menu />
           </v-card>
         </v-tab-item>
         <v-tab-item>
@@ -121,12 +119,14 @@
 
 <script>
 import SidebarMenuItem from '@/components/SidebarMenu/SidebarMenuItem.vue'
+import LbsSidebarMenu from '@/components/SidebarMenu/LbsSidebarMenu.vue'
 import { animationMixin } from '@/components/mixin'
 
 export default {
   name: 'SidebarMenu',
   components: {
-    SidebarMenuItem
+    SidebarMenuItem,
+    LbsSidebarMenu
   },
   mixins: [animationMixin],
   props: {
@@ -322,7 +322,6 @@ export default {
 @import '@/scss/vue-sidebar-menu';
 .v-tabs--vertical > .v-tabs-bar .v-tab {
   transform: rotate(270deg);
-
     left: -54px;
     min-height: 150px;
     min-width: 150px;
@@ -336,6 +335,9 @@ export default {
 .v-sidebar-menu .vsm--link_level-1.vsm--link_exact-active,
 .v-sidebar-menu .vsm--link_level-1.vsm--link_active {
     box-shadow: 7px 0px 0px 0px #697a8a inset!important;
+}
+.theme--light.v-tabs-items {
+  background-color: #001E38!important;
 }
 </style>
 <style scoped>
