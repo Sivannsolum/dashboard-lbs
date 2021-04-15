@@ -322,9 +322,9 @@ export default {
 @import '@/scss/vue-sidebar-menu';
 .v-tabs--vertical > .v-tabs-bar .v-tab {
   transform: rotate(270deg);
-  left: -54px;
-  min-height: 150px;
-  min-width: 150px;
+    left: -54px;
+    min-height: 150px;
+    min-width: 150px;
 }
 .v-tabs-bar__content{
   width: 46px;
@@ -342,7 +342,7 @@ export default {
 </style>
 <style scoped>
 .theme--light.v-tabs > .v-tabs-bar .v-tab:not(.v-tab--active) {
-  background: #E2E2E2 !important;
+  background: #e2e2e2 !important;
   font-weight: bold;
 }
 .v-tab {
@@ -350,11 +350,12 @@ export default {
 }
 .v-tab--active {
   font-weight: bolder !important;
-  background: #001E38 !important;
+  background: #001e38 !important;
   height: 15% !important;
   color: white !important;
 }
 .theme--light.v-card {
   background: #001E38 !important;
 }
+
 </style>
