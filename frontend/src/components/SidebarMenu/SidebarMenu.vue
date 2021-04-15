@@ -8,12 +8,16 @@
       <v-app id="inspire">
     <v-card>
       <v-tabs vertical>
+        <router-link to="/">
         <v-tab>
           ESL
         </v-tab>
+        </router-link>
+        <router-link to="/Lbs">
         <v-tab>
           LBS
         </v-tab>
+        </router-link>
         <v-tab>
           Touch LCD
         </v-tab>

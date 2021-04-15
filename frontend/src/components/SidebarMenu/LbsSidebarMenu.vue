@@ -26,22 +26,31 @@
       </v-row>
 
       <div class="text-center">
+        <router-link to="/Lbs/Management">
         <v-btn class="ma-2" outlined color="white"> Management </v-btn>
+        </router-link>
       </div>
       <div class="text-center">
+        <router-link to="/Lbs/MapDesign">
         <v-btn class="ma-2" outlined color="white"> Map Design </v-btn>
+        </router-link>
       </div>
       <div class="text-center">
+        <router-link to="/Lbs/SelfLocationLink">
         <v-btn class="ma-2" outlined color="white"> Self Location Link </v-btn>
+        </router-link>
       </div>
       <div class="text-center">
-        <v-btn class="ma-2" outlined color="white">
+        <router-link to="/Lbs/StockingAndPricing">
+          <v-btn class="ma-2" outlined color="white">
           Stocking &#38; Pricing
         </v-btn>
+        </router-link>
       </div>
-
       <div class="text-center">
+        <router-link to="/Lbs/Setting">
         <v-btn class="ma-2" outlined color="white"> Setting </v-btn>
+        </router-link>
       </div>
       <br />
 
