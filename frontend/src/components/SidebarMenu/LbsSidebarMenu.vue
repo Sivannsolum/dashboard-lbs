@@ -148,7 +148,25 @@
   color: #c1c1c1;
   font-size: var(--font20);
 }
-/* ::v-deep.v-icon  .v-checkbox-marked .theme--dark .white--text{
-  background: red !important;
-} */
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 2px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    background:#777575;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
+::-webkit-scrollbar-thumb:window-inactive {
+    background: #777575;
+}
 </style>
