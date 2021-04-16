@@ -250,7 +250,7 @@ router.beforeEach(async (to, from, next) => {
       if (prevPage) {
         next(prevPage)
       } else {
-        next('/')
+        // next('/')
       }
       if (!timeout) {
         timeout = setTimeout(() => {

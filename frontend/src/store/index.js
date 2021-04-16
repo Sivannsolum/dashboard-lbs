@@ -3,6 +3,8 @@ import Vuex from 'vuex'
 import createPersistedState from 'vuex-persistedstate'
 import { auth } from './auth.module'
 import { dataStore } from './dataStore'
+import { lbs } from './modules/lbs/index'
+
 import commons from '@/plugins/commons'
 Vue.use(Vuex)
 
@@ -23,11 +25,12 @@ const defaultPages = [
 export default new Vuex.Store({
   modules: {
     auth: auth,
-    dataStore: dataStore
+    dataStore: dataStore,
+    lbs: lbs
   },
   plugins: [
     createPersistedState({
-      paths: ['auth', 'dataStore']
+      paths: ['auth', 'dataStore', 'lbs']
     })
   ],
   actions: {
