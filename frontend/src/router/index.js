@@ -11,6 +11,7 @@ import {
 } from '@/plugins/sessionStorageManager'
 import EventBus from '@/plugins/eventBus.js'
 // import commons from '@/plugins/commons'
+import lbsRoutes from '@/lbs/router/index'
 
 Vue.use(VueRouter)
 
@@ -169,41 +170,8 @@ const routes = [
       }
     ]
   },
-  {
-    path: '/Lbs',
-    component: () => import('@/views/Main'),
-    // redirect: '/Lbs/Management',
-    meta: {
-      requiresAuth: true
-    },
-    children: [
-      {
-        path: '/Lbs/Management',
-        name: 'Management',
-        component: () => import('@/views/Lbs/Management')
-      },
-      {
-        path: '/Lbs/MapDesign',
-        name: 'Map Design',
-        component: () => import('@/views/Lbs/MapDesign')
-      },
-      {
-        path: '/Lbs/SelfLocationLink',
-        name: 'Self Location Link',
-        component: () => import('@/views/Lbs/SelfLocationLink')
-      },
-      {
-        path: '/Lbs/StockingAndPricing',
-        name: 'Stoking And Pricing',
-        component: () => import('@/views/Lbs/StockingAndPricing')
-      },
-      {
-        path: '/Lbs/Setting',
-        name: 'Setting',
-        component: () => import('@/views/Lbs/Setting')
-      }
-    ]
-  },
+  // LBS Routing
+  lbsRoutes,
   {
     path: '/login',
     name: 'Login',

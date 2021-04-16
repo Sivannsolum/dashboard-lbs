@@ -123,7 +123,7 @@
 
 <script>
 import SidebarMenuItem from '@/components/SidebarMenu/SidebarMenuItem.vue'
-import LbsSidebarMenu from '@/components/SidebarMenu/LbsSidebarMenu.vue'
+import LbsSidebarMenu from '@/lbs/components/LbsSidebarMenu.vue'
 import { animationMixin } from '@/components/mixin'
 
 export default {
