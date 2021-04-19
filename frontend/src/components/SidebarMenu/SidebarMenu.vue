@@ -7,21 +7,21 @@
   >
       <v-app id="inspire">
     <v-card>
-      <v-tabs vertical>
+      <v-tabs vertical v-model="selectedTab">
         <router-link to="/">
-        <v-tab>
+        <v-tab key="esl">
           ESL
         </v-tab>
         </router-link>
         <router-link to="/Lbs">
-        <v-tab>
+        <v-tab key="lbs">
           LBS
         </v-tab>
         </router-link>
-        <v-tab>
+        <v-tab key="touchLcd">
           Touch LCD
         </v-tab>
-        <v-tab>
+        <v-tab key="storeUser">
           Store &#38; User
         </v-tab>
         <v-tab-item>
@@ -190,7 +190,8 @@ export default {
       parentHeight: 0,
       parentWidth: 0,
       parentOffsetTop: 0,
-      parentOffsetLeft: 0
+      parentOffsetLeft: 0,
+      selectedTab: 'esl'
     }
   },
   computed: {
@@ -242,6 +243,10 @@ export default {
       this.isCollapsed = val
       this.unsetMobileItem()
     }
+  },
+  mounted () {
+    this.selectedTab = 'lbs'
+    console.log(this.selectedTab)
   },
   methods: {
     onMouseLeave () {
