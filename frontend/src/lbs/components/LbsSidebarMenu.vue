@@ -14,42 +14,53 @@
         >
       </p>
       <v-row>
-        <v-checkbox
-          dark
-          label="Zone"
-          class="my-checkbox"
-          style="margin-left: 24px"
-        ></v-checkbox>
-        <v-checkbox dark label="Interior" class="my-checkbox"></v-checkbox>
-        <v-checkbox dark label="Text" class="my-checkbox"></v-checkbox>
-        <v-checkbox dark label="Facility" class="my-checkbox"></v-checkbox>
+        <div class="checkboxes">
+          <label for="Zone">
+            <input type="checkbox" style="margin-left: 20px" id="Zone" />
+            <span class="span-class">Zone</span>
+          </label>
+          <label for="Interior">
+            <input type="checkbox" id="Interior" />
+            <span class="span-class">Interior</span>
+          </label>
+          <label for="Text">
+            <input type="checkbox" id="Text" />
+            <span class="span-class">Text</span>
+          </label>
+          <label for="Facility">
+            <input type="checkbox" id="Facility" />
+            <span class="span-class">Facility</span>
+          </label>
+        </div>
       </v-row>
 
       <div class="text-center">
         <router-link to="/Lbs/Management">
-        <v-btn class="ma-2" outlined color="white"> Management </v-btn>
+          <v-btn class="ma-2" outlined color="white"> Management </v-btn>
         </router-link>
       </div>
       <div class="text-center">
         <router-link to="/Lbs/MapDesign">
-        <v-btn class="ma-2" outlined color="white"> Map Design </v-btn>
+          <v-btn class="ma-2" outlined color="white"> Map Design </v-btn>
         </router-link>
       </div>
       <div class="text-center">
         <router-link to="/Lbs/SelfLocationLink">
-        <v-btn class="ma-2" outlined color="white"> Self Location Link </v-btn>
+          <v-btn class="ma-2" outlined color="white">
+            Self Location Link
+          </v-btn>
         </router-link>
       </div>
       <div class="text-center">
         <router-link to="/Lbs/StockingAndPricing">
           <v-btn class="ma-2" outlined color="white">
-          Stocking &#38; Pricing
-        </v-btn>
+            Stocking &#38; Pricing
+          </v-btn>
         </router-link>
       </div>
       <div class="text-center">
         <router-link to="/Lbs/Setting">
-        <v-btn class="ma-2" outlined color="white"> Setting </v-btn>
+          <v-btn class="ma-2" outlined color="white"> Setting </v-btn>
         </router-link>
       </div>
       <br />
@@ -110,6 +121,55 @@
   </v-card>
 </template>
 <style scoped>
+.checkboxes {
+  margin-bottom: 15px;
+}
+.checkboxes label {
+  display: inline-block;
+  padding-right: 10px;
+  white-space: nowrap;
+}
+.checkboxes input {
+  vertical-align: middle;
+}
+.checkboxes label span {
+  vertical-align: middle;
+  font-size: 12px;
+}
+input[type="checkbox"] {
+  margin-right: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  width: 14px;
+  position: relative;
+}
+input[type="checkbox"]:after {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  top: 0;
+  content: " ";
+  background-color: #001e38;
+  color: #001d37;
+  display: inline-block;
+  visibility: visible;
+  border-radius: 3px;
+  border: 2px solid grey;
+  padding: 0px 1px 0px 1px;
+}
+input[type="checkbox"]:checked:after {
+  content: "✔";
+  font-size: 12px;
+  background-color: #ffffff;
+  font-weight: 1000;
+  line-height: 12px;
+  padding-right: 10px;
+}
+.span-class {
+  margin-top: -5px;
+  color: #ffffff;
+}
+
 ::v-deep.theme--dark.v-label {
   color: #001e38 !important;
   font-size: small;
