@@ -9,19 +9,19 @@
     <v-card>
       <v-tabs vertical v-model="selectedTab">
         <router-link to="/">
-        <v-tab key="esl">
+        <v-tab>
           ESL
         </v-tab>
         </router-link>
         <router-link to="/Lbs">
-        <v-tab key="lbs">
+        <v-tab>
           LBS
         </v-tab>
         </router-link>
-        <v-tab key="touchLcd">
+        <v-tab>
           Touch LCD
         </v-tab>
-        <v-tab key="storeUser">
+        <v-tab>
           Store &#38; User
         </v-tab>
         <v-tab-item>
@@ -191,7 +191,7 @@ export default {
       parentWidth: 0,
       parentOffsetTop: 0,
       parentOffsetLeft: 0,
-      selectedTab: 'esl'
+      selectedTab: ''
     }
   },
   computed: {
@@ -242,11 +242,15 @@ export default {
       if (this.isCollapsed === this.collapsed) return
       this.isCollapsed = val
       this.unsetMobileItem()
+    },
+    selectedTab (val) {
+      const tabIndex = parseInt(val)
+      this.selectedTab = tabIndex
+      sessionStorage.setItem('tabIndex', tabIndex)
     }
   },
   mounted () {
-    this.selectedTab = 'lbs'
-    console.log(this.selectedTab)
+    this.selectedTab = sessionStorage.getItem('tabIndex')
   },
   methods: {
     onMouseLeave () {
