@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 import createPersistedState from 'vuex-persistedstate'
 import { auth } from './auth.module'
 import { dataStore } from './dataStore'
-import { lbs } from './modules/lbs/index'
+import { lbs } from '@/lbs/store/index'
 
 import commons from '@/plugins/commons'
 Vue.use(Vuex)

@@ -212,13 +212,15 @@ router.beforeEach(async (to, from, next) => {
       // if (isAccessablePage || !commons.isNull(store.state.auth.user.otaEnable)) {
       // 접근권한 있는 경우
       next()
+    } else if (to.path.substring(0, 5) === '/Lbs/') { // Condition for LBS module
+      next()
     } else {
       // 접근권한 없는 경우
       const prevPage = getTempObj(codes.prevPathName)
       if (prevPage) {
         next(prevPage)
       } else {
-        // next('/')
+        next('/')
       }
       if (!timeout) {
         timeout = setTimeout(() => {

@@ -7,7 +7,7 @@
   >
       <v-app id="inspire">
     <v-card>
-      <v-tabs vertical>
+      <v-tabs vertical v-model="selectedTab">
         <router-link to="/">
         <v-tab>
           ESL
@@ -190,7 +190,8 @@ export default {
       parentHeight: 0,
       parentWidth: 0,
       parentOffsetTop: 0,
-      parentOffsetLeft: 0
+      parentOffsetLeft: 0,
+      selectedTab: ''
     }
   },
   computed: {
@@ -241,7 +242,15 @@ export default {
       if (this.isCollapsed === this.collapsed) return
       this.isCollapsed = val
       this.unsetMobileItem()
+    },
+    selectedTab (val) {
+      const tabIndex = parseInt(val)
+      this.selectedTab = tabIndex
+      sessionStorage.setItem('tabIndex', tabIndex)
     }
+  },
+  mounted () {
+    this.selectedTab = sessionStorage.getItem('tabIndex')
   },
   methods: {
     onMouseLeave () {
