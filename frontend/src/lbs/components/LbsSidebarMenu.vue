@@ -36,31 +36,31 @@
 
       <div class="text-center">
         <router-link to="/Lbs/Management">
-          <v-btn class="ma-2" outlined color="white"> Management </v-btn>
+          <v-btn class="ma-2" @click="isActive('m')" :outlined="isActiveeBtn !== 'm'" color="white"> Management </v-btn>
         </router-link>
       </div>
       <div class="text-center">
         <router-link to="/Lbs/MapDesign">
-          <v-btn class="ma-2" outlined color="white"> Map Design </v-btn>
+          <v-btn class="ma-2" @click="isActive('md')" :outlined="isActiveeBtn !== 'md'" color="white"> Map Design </v-btn>
         </router-link>
       </div>
       <div class="text-center">
         <router-link to="/Lbs/SelfLocationLink">
-          <v-btn class="ma-2" outlined color="white">
+          <v-btn class="ma-2" @click="isActive('sll')" :outlined="isActiveeBtn !== 'sll'" color="white">
             Self Location Link
           </v-btn>
         </router-link>
       </div>
       <div class="text-center">
         <router-link to="/Lbs/StockingAndPricing">
-          <v-btn class="ma-2" outlined color="white">
+          <v-btn class="ma-2" @click="isActive('sp')" :outlined="isActiveeBtn !== 'sp'" color="white">
             Stocking &#38; Pricing
           </v-btn>
         </router-link>
       </div>
       <div class="text-center">
         <router-link to="/Lbs/Setting">
-          <v-btn class="ma-2" outlined color="white"> Setting </v-btn>
+          <v-btn class="ma-2" @click="isActive('s')" :outlined="isActiveBtn !== 's'" color="white"> Setting </v-btn>
         </router-link>
       </div>
       <br />
@@ -120,6 +120,31 @@
     </div>
   </v-card>
 </template>
+<script>
+export default {
+  data () {
+    return {
+      isActiveBtn: 'm'
+    }
+  },
+  computed: {
+    isActiveeBtn () {
+      return this.isActiveBtn
+    }
+  },
+  methods: {
+    isActive (btn) {
+      this.isActiveBtn = btn
+      sessionStorage.setItem('isActive', btn)
+    }
+  },
+  mounted () {
+    console.log(this.isActiveeBtn === 'm')
+    this.isActiveBtn = sessionStorage.getItem('isActive')
+    this.isActive(this.isActiveBtn)
+  }
+}
+</script>
 <style scoped>
 .checkboxes {
   margin-bottom: 15px;
