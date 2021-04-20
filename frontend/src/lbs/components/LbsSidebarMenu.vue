@@ -145,7 +145,6 @@ export default {
     }
   },
   mounted () {
-    console.log(this.isActiveeBtn === 'm')
     this.isActiveBtn = sessionStorage.getItem('isActive')
     this.isActive(this.isActiveBtn)
   }
