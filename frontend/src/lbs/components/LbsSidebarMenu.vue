@@ -36,31 +36,159 @@
 
       <div class="text-center">
         <router-link to="/Lbs/Management">
-          <v-btn class="ma-2" @click="isActive('m')" :outlined="isActiveeBtn !== 'm'" color="white"> Management </v-btn>
+          <v-btn
+            class="ma-2"
+            @click="isActive('m')"
+            :outlined="isActiveeBtn !== 'm'"
+            color="white"
+          >
+            Management
+          </v-btn>
         </router-link>
       </div>
       <div class="text-center">
         <router-link to="/Lbs/MapDesign">
-          <v-btn class="ma-2" @click="isActive('md')" :outlined="isActiveeBtn !== 'md'" color="white"> Map Design </v-btn>
+          <v-btn
+            class="ma-2"
+            @click="isActive('md')"
+            :outlined="isActiveeBtn !== 'md'"
+            color="white"
+          >
+            Map Design
+          </v-btn>
+          <div class="map-design-selection" v-if="isActiveBtn === 'md'">
+            <div class="icons-background">
+              <ul class="icons-ul">
+                <li class="icons-li">
+                  <img
+                    src="@/assets/img/plus_icon.png"
+                    alt=""
+                    class="icon-class"
+                    style="margin-left: -30px; margin-top: 15px"
+                  /><img
+                    src="@/assets/img/plus_icon.png"
+                    alt=""
+                    class="icon-class"
+                    style="margin-left: -30px; margin-top: 15px"
+                  />
+                </li>
+                <li class="icons-li">
+                  <img
+                    src="@/assets/img/minus_icon.png"
+                    alt=""
+                    class="icon-class margin-class"
+                  /><img
+                    src="@/assets/img/minus_icon.png"
+                    alt=""
+                    class="icon-class margin-class"
+                  />
+                </li>
+                <li class="icons-li">
+                  <img
+                    src="@/assets/img/on_icon.png"
+                    alt=""
+                    class="icon-class margin-class"
+                  /><img
+                    src="@/assets/img/on_icon.png"
+                    alt=""
+                    class="icon-class margin-class"
+                  />
+                </li>
+                <li class="icons-li">
+                  <img
+                    src="@/assets/img/vibrate_icon.png"
+                    alt=""
+                    class="icon-class"
+                    style="margin-left: -30px; margin-top: -15px"
+                  /><img
+                    src="@/assets/img/vibrate_icon.png"
+                    alt=""
+                    class="icon-class margin-class"
+                  />
+                </li>
+                <li class="icons-li">
+                  <img
+                    src="@/assets/img/plus_icon.png"
+                    alt=""
+                    class="icon-class margin-class"
+                  /><img
+                    src="@/assets/img/plus_icon.png"
+                    alt=""
+                    class="icon-class margin-class"
+                  />
+                </li>
+                <li class="icons-li">
+                  <img
+                    src="@/assets/img/minus_icon.png"
+                    alt=""
+                    class="icon-class margin-class"
+                  /><img
+                    src="@/assets/img/minus_icon.png"
+                    alt=""
+                    class="icon-class margin-class"
+                  />
+                </li>
+                <li class="icons-li">
+                  <img
+                    src="@/assets/img/on_icon.png"
+                    alt=""
+                    class="icon-class margin-class"
+                  /><img
+                    src="@/assets/img/on_icon.png"
+                    alt=""
+                    class="icon-class margin-class"
+                  />
+                </li>
+                <li class="icons-li">
+                  <img
+                    src="@/assets/img/vibrate_icon.png"
+                    alt=""
+                    class="icon-class margin-class"
+                  /><img
+                    src="@/assets/img/vibrate_icon.png"
+                    alt=""
+                    class="icon-class margin-class"
+                  />
+                </li>
+              </ul>
+            </div>
+          </div>
         </router-link>
       </div>
       <div class="text-center">
         <router-link to="/Lbs/SelfLocationLink">
-          <v-btn class="ma-2" @click="isActive('sll')" :outlined="isActiveeBtn !== 'sll'" color="white">
+          <v-btn
+            class="ma-2"
+            @click="isActive('sll')"
+            :outlined="isActiveeBtn !== 'sll'"
+            color="white"
+          >
             Self Location Link
           </v-btn>
         </router-link>
       </div>
       <div class="text-center">
         <router-link to="/Lbs/StockingAndPricing">
-          <v-btn class="ma-2" @click="isActive('sp')" :outlined="isActiveeBtn !== 'sp'" color="white">
+          <v-btn
+            class="ma-2"
+            @click="isActive('sp')"
+            :outlined="isActiveeBtn !== 'sp'"
+            color="white"
+          >
             Stocking &#38; Pricing
           </v-btn>
         </router-link>
       </div>
       <div class="text-center">
         <router-link to="/Lbs/Setting">
-          <v-btn class="ma-2" @click="isActive('s')" :outlined="isActiveBtn !== 's'" color="white"> Setting </v-btn>
+          <v-btn
+            class="ma-2"
+            @click="isActive('s')"
+            :outlined="isActiveBtn !== 's'"
+            color="white"
+          >
+            Setting
+          </v-btn>
         </router-link>
       </div>
       <br />
@@ -151,6 +279,35 @@ export default {
 }
 </script>
 <style scoped>
+.margin-class {
+  margin-left: -30px;
+  margin-top: -15px;
+}
+.icons-background {
+  background: #ffffff;
+  box-shadow: 0px 12px 16px #455b631a;
+  border-radius: 0px 12px 12px 0px;
+  opacity: 0.9;
+}
+.icons-li {
+  margin-bottom: -20px;
+  display: flex;
+}
+::v-deep .v-application ul {
+  padding-left: 0px !important;
+}
+.icon-class {
+  height: 80px;
+  width: 80px;
+}
+.map-design-selection {
+  background: transparent;
+  height: 400px;
+  margin-left: 246px;
+  margin-top: -140px;
+  width: 117px;
+  position: absolute;
+}
 .checkboxes {
   margin-bottom: 15px;
 }
