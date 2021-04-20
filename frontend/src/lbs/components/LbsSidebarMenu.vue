@@ -255,6 +255,7 @@
   </v-card>
 </template>
 <script>
+import EventBus from '@/plugins/eventBus'
 export default {
   data () {
     return {
@@ -275,6 +276,9 @@ export default {
   mounted () {
     this.isActiveBtn = sessionStorage.getItem('isActive')
     this.isActive(this.isActiveBtn)
+    EventBus.$on('resetLbsBtn', () => {
+      this.isActive('m')
+    })
   }
 }
 </script>

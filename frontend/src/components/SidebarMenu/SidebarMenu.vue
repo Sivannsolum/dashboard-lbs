@@ -125,6 +125,7 @@
 import SidebarMenuItem from '@/components/SidebarMenu/SidebarMenuItem.vue'
 import LbsSidebarMenu from '@/lbs/components/LbsSidebarMenu.vue'
 import { animationMixin } from '@/components/mixin'
+import EventBus from '@/plugins/eventBus'
 
 export default {
   name: 'SidebarMenu',
@@ -247,6 +248,7 @@ export default {
       const tabIndex = parseInt(val)
       this.selectedTab = tabIndex
       sessionStorage.setItem('tabIndex', tabIndex)
+      if (this.selectedTab === 1) EventBus.$emit('resetLbsBtn')
     }
   },
   mounted () {
