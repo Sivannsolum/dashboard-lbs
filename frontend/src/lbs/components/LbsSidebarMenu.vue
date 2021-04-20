@@ -112,7 +112,7 @@
               background: white;
               border-radius: 6px;
               padding: 0px;
-              width: 210px;
+              width: 211px;
             "
             ><span
               ><img
