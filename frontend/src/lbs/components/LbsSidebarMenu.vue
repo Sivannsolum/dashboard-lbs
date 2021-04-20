@@ -81,10 +81,10 @@
               background: white;
               border-radius: 6px;
               overflow-y: scroll;
-              max-height: 170px;
+              max-height: 130px;
             "
           >
-            <div style="padding: 10px">
+            <div style="margin: 15px">
               <v-checkbox dense label="Layer 1"></v-checkbox>
               <v-divider></v-divider>
               <v-checkbox dense label="Layer 2"></v-checkbox>
@@ -99,7 +99,7 @@
       </v-list>
       <v-divider></v-divider>
       <v-list style="background: transparent">
-        <v-list-group>
+        <v-list-group style="margin: 3px">
           <template v-slot:activator>
             <v-list-item-title
               style="color: white; font-size: small; font-weight: bold"
@@ -107,10 +107,16 @@
             >
           </template>
           <v-container
-            style="height: 120px; background: white; border-radius: 6px"
+            style="
+              height: 120px;
+              background: white;
+              border-radius: 6px;
+              padding: 0px;
+              width: 210px;
+            "
             ><span
               ><img
-                style="height: 95px; width: 206px"
+                style="height: 118px; width: 209px"
                 src="@/assets/img/lbsminimap.png"
                 alt=""
             /></span>
