@@ -7,7 +7,8 @@ import { checkApiSession } from '@/plugins/healthCheck'
 import {
   clearTempObjs,
   setTempObj,
-  getTempObj
+  getTempObj,
+  clearSessionData
 } from '@/plugins/sessionStorageManager'
 import EventBus from '@/plugins/eventBus.js'
 // import commons from '@/plugins/commons'
@@ -271,6 +272,7 @@ router.beforeEach(async (to, from, next) => {
     next()
   }
   if (from.fullPath !== '/') clearTempObjs()
+  if (to.fullPath === '/') clearSessionData()
 })
 
 router.afterEach(() => {

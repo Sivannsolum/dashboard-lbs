@@ -252,7 +252,8 @@ export default {
     }
   },
   mounted () {
-    this.selectedTab = sessionStorage.getItem('tabIndex')
+    const tabIndex = sessionStorage.getItem('tabIndex')
+    this.selectedTab = tabIndex !== null ? tabIndex : 0
   },
   methods: {
     onMouseLeave () {

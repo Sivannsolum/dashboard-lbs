@@ -51,5 +51,8 @@ const clearTempObjs = () => {
     sessionStorage.removeItem(keyToDel)
   }
 }
-
-export { setObj, getObj, setTempObj, getTempObj, clearTempObjs }
+const clearSessionData = () => {
+  const sessionKeyArr = ['tabIndex', 'isActive']
+  sessionKeyArr.forEach(key => sessionStorage.removeItem(key))
+}
+export { setObj, getObj, setTempObj, getTempObj, clearTempObjs, clearSessionData }

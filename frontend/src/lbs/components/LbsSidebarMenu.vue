@@ -256,6 +256,7 @@
 </template>
 <script>
 import EventBus from '@/plugins/eventBus'
+// import { setTempObj, getTempObj } from '@/plugins/sessionStorageManager'
 export default {
   data () {
     return {
@@ -274,10 +275,12 @@ export default {
     }
   },
   mounted () {
-    this.isActiveBtn = sessionStorage.getItem('isActive')
+    const isActive = sessionStorage.getItem('isActive')
+    this.isActiveBtn = isActive !== null ? isActive : 'm'
     this.isActive(this.isActiveBtn)
     EventBus.$on('resetLbsBtn', () => {
-      this.isActive('m')
+      this.isActiveBtn = 'm'
+      this.isActive(this.isActiveBtn)
     })
   }
 }
