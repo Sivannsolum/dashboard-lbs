@@ -7,13 +7,17 @@
   >
       <v-app id="inspire">
     <v-card>
-      <v-tabs vertical>
+      <v-tabs vertical v-model="selectedTab">
+        <router-link to="/">
         <v-tab>
           ESL
         </v-tab>
+        </router-link>
+        <router-link to="/Lbs">
         <v-tab>
           LBS
         </v-tab>
+        </router-link>
         <v-tab>
           Touch LCD
         </v-tab>
@@ -119,8 +123,9 @@
 
 <script>
 import SidebarMenuItem from '@/components/SidebarMenu/SidebarMenuItem.vue'
-import LbsSidebarMenu from '@/components/SidebarMenu/LbsSidebarMenu.vue'
+import LbsSidebarMenu from '@/lbs/components/LbsSidebarMenu.vue'
 import { animationMixin } from '@/components/mixin'
+import EventBus from '@/plugins/eventBus'
 
 export default {
   name: 'SidebarMenu',
@@ -186,7 +191,8 @@ export default {
       parentHeight: 0,
       parentWidth: 0,
       parentOffsetTop: 0,
-      parentOffsetLeft: 0
+      parentOffsetLeft: 0,
+      selectedTab: ''
     }
   },
   computed: {
@@ -237,7 +243,17 @@ export default {
       if (this.isCollapsed === this.collapsed) return
       this.isCollapsed = val
       this.unsetMobileItem()
+    },
+    selectedTab (val) {
+      const tabIndex = parseInt(val)
+      this.selectedTab = tabIndex
+      sessionStorage.setItem('tabIndex', tabIndex)
+      if (this.selectedTab === 1) EventBus.$emit('resetLbsBtn')
     }
+  },
+  mounted () {
+    const tabIndex = sessionStorage.getItem('tabIndex')
+    this.selectedTab = tabIndex !== null ? tabIndex : 0
   },
   methods: {
     onMouseLeave () {
@@ -356,6 +372,7 @@ export default {
 }
 .theme--light.v-card {
   background: #001E38 !important;
+  border: none;
 }
 
 </style>

@@ -7,10 +7,12 @@ import { checkApiSession } from '@/plugins/healthCheck'
 import {
   clearTempObjs,
   setTempObj,
-  getTempObj
+  getTempObj,
+  clearSessionData
 } from '@/plugins/sessionStorageManager'
 import EventBus from '@/plugins/eventBus.js'
 // import commons from '@/plugins/commons'
+import lbsRoutes from '@/lbs/router/index'
 
 Vue.use(VueRouter)
 
@@ -169,6 +171,8 @@ const routes = [
       }
     ]
   },
+  // LBS Routing
+  lbsRoutes,
   {
     path: '/login',
     name: 'Login',
@@ -208,6 +212,8 @@ router.beforeEach(async (to, from, next) => {
     if (isAccessablePage) {
       // if (isAccessablePage || !commons.isNull(store.state.auth.user.otaEnable)) {
       // 접근권한 있는 경우
+      next()
+    } else if (to.path.substring(0, 5) === '/Lbs/') { // Condition for LBS module
       next()
     } else {
       // 접근권한 없는 경우
@@ -266,6 +272,7 @@ router.beforeEach(async (to, from, next) => {
     next()
   }
   if (from.fullPath !== '/') clearTempObjs()
+  if (to.fullPath === '/') clearSessionData()
 })
 
 router.afterEach(() => {

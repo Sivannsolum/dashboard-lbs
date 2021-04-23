@@ -591,6 +591,7 @@ export default {
     EventBus.$off('messageAlert')
     EventBus.$off('loadingOn')
     EventBus.$off('loadingOff')
+    EventBus.$off('resetLbsBtn')
     commons.clearVuex()
   },
   destroyed () {
