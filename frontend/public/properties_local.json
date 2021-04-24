@@ -1,1 +1,8 @@
-{"serverIp":"20.194.25.187","serverPort":"9001","serverDomain":"/dashboardWeb","protocolType":"http","Dashboard_Release":1424}
+{
+"serverIp": "52.231.98.30",
+"serverPort": "9002",
+"serverDomain": "/dashboardWeb",
+"protocolType": "https",
+"apiKey": "NsKQvyOF.zguBCKAfwFCLBgIizGGaClomAJebJVZaRxy",
+"Dashboard_Release": 1424
+}

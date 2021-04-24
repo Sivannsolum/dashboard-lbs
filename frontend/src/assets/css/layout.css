@@ -81,7 +81,8 @@ body .wrapper {
 
 /*** 우측콘텐츠 ***/
 .contentsWarp {
-  width: calc(100% - 280px);
+  /* width: calc(100% - 280px); */
+  width: calc(100% - 320px);
   padding: 0;
 }
 

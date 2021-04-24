@@ -278,9 +278,11 @@ export default {
     const isActive = sessionStorage.getItem('isActive')
     this.isActiveBtn = isActive !== null ? isActive : 'm'
     this.isActive(this.isActiveBtn)
+    this.$store.commit('lbs/setTabUrl', 'lbs')
     EventBus.$on('resetLbsBtn', () => {
       this.isActiveBtn = 'm'
       this.isActive(this.isActiveBtn)
+      this.$store.commit('lbs/setTabUrl', 'lbs')
     })
   }
 }

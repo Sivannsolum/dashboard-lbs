@@ -180,7 +180,7 @@
         </div>
       </header>
       <!-- 콘텐츠 -->
-      <div class="contents">
+      <div :class="{contents: !isLbs}">
         <router-view></router-view>
       </div>
     </div>
@@ -357,6 +357,9 @@ export default {
       } else {
         return ''
       }
+    },
+    isLbs () {
+      return this.$store.getters['lbs/getTabUrl'] === 'lbs'
     }
   },
   watch: {

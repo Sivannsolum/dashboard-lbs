@@ -338,4 +338,14 @@ export default {
 .theme--light.v-tabs-items {
     background-color: #ffffff !important;
 }
+.lighten-5{
+  padding: 0!important;
+}
+.v-application .pa-2 {
+    padding: 0px !important;
+}
+.v-image.v-responsive.theme--light{
+  margin-left: -1px;
+  margin-top: -1px;
+}
 </style>

@@ -249,6 +249,7 @@ export default {
       this.selectedTab = tabIndex
       sessionStorage.setItem('tabIndex', tabIndex)
       if (this.selectedTab === 1) EventBus.$emit('resetLbsBtn')
+      else this.$store.commit('lbs/setTabUrl', '')
     }
   },
   mounted () {

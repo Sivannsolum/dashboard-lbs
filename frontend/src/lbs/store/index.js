@@ -4,6 +4,9 @@ import * as getters from './getters'
 
 export const lbs = {
   namespaced: true,
+  state: () => ({
+    tabUrl: ''
+  }),
   mutations,
   actions,
   getters
