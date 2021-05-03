@@ -7,10 +7,9 @@
             v-model="tab"
             grow
             style="margin-top: -135px"
-            :hide-slider="true"
-            :center-active="true"
-            :active-class="true"
-
+            hide-slider
+            center-active
+            active-class="activeTab"
           >
             <v-tabs-slider></v-tabs-slider>
             <v-tab
@@ -130,5 +129,8 @@ export default {
 }
 .theme--light.v-tabs-items {
   background-color: white !important;
+}
+.v-tab span{
+  font-size: x-small;
 }
 </style>
