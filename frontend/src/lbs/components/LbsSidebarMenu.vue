@@ -312,7 +312,7 @@ export default {
 .map-design-selection {
   background: transparent;
   height: 400px;
-  margin-left: 246px;
+  margin-left: 257px;
   margin-top: -140px;
   width: 117px;
   position: absolute;
