@@ -26,8 +26,8 @@
       </div>
       <v-container fluid>
         <v-row align="center">
-          <v-col class="d-flex" cols="12" sm="2">
-            <h3>Function On/Off</h3>
+          <v-col class="d-flex" cols="12" sm="3">
+            <p>Function On/Off</p>
           </v-col>
           <v-col class="d-flex selected-size mb-10 pr-90" cols="12" sm="2">
             <v-select
@@ -38,7 +38,8 @@
               dense
               hide-details
               solo
-              style="max-width: 80px; background-color: #09263f !important"
+              dark
+              background-color="#001e38"
             ></v-select>
           </v-col>
         </v-row>
@@ -53,15 +54,15 @@
         :dense="true"
         class="tbl-type04 mt-2 products"
       >
-
+        <template v-slot:[`item.checkStatus`]="{ item }">
+          <v-icon @click="close(item.prefix)">mdi-close-circle</v-icon>
+        </template>
         <template slot="no-data">
           <p>
             {{ $t("No data available") }}
           </p>
         </template>
-        <template>
-          <v-icon @click="text(item)">mdi-close-circle</v-icon>
-        </template>
+
       </v-data-table>
     </div>
     <v-btn :disabled="false" text class="btn ml-2 mt-4">{{ $t("Add") }}</v-btn>
@@ -73,28 +74,28 @@ export default {
   name: 'StoreHistory',
   data () {
     return {
-      defaultSelected: 'on',
+      defaultSelected: 'On',
       items: ['STORE HISTORY', 'COMPONENT', 'APP SET', 'DEFAULT SET'],
-      selectedItems: ['on', 'off'],
+      selectedItems: ['On', 'Off'],
       text: 'this is search tab bar',
       products: [
         {
-          validDigits: 'Rosalinda ',
-          prefix: 39,
-          paddingValue: 'Brewer ',
-          totalDigit: 'Melendez '
+          validDigits: '8 ',
+          prefix: 'XX',
+          paddingValue: '-',
+          totalDigit: '10 '
         },
         {
-          validDigits: 'Cunningham ',
-          prefix: 6,
-          paddingValue: 'Jannie ',
-          totalDigit: 'Underwood '
+          validDigits: '7 ',
+          prefix: 'YY',
+          paddingValue: '- ',
+          totalDigit: '12 '
         },
         {
-          validDigits: 'Craft ',
-          prefix: 13,
-          paddingValue: 'Ericka ',
-          totalDigit: 'Suzanne '
+          validDigits: '8 ',
+          prefix: 'ZZ',
+          paddingValue: '- ',
+          totalDigit: '13 '
         }
       ],
       history: [
@@ -205,6 +206,9 @@ export default {
     rowClass2 (item) {
       const rowClass = 'myrowClass2'
       return rowClass
+    },
+    close (id) {
+      console.log(id)
     }
   }
 }
@@ -282,5 +286,14 @@ export default {
 }
 .mdi[data-v-735daf6c]:before{
   color:red !important
+}
+.header-component h3{
+  font-size: small;
+  font-weight: normal;
+}
+</style>
+<style>
+.v-data-table-header th.text-start span{
+  color: black;
 }
 </style>
