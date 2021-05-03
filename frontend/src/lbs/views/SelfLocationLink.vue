@@ -90,84 +90,37 @@
                 <v-btn class="btn type-search mb-1" text>{{
                   $t("Search")
                 }}</v-btn>
-                <v-toolbar grow style="margin-top: 15px; " height="400px">
-                  <template v-slot:extension width="100%">
-                    <v-tabs v-model="tab" style="padding-bottom: 850px">
-                      <v-tab
-                        href="#tab-1st"
-                        class="primary--text tab-divider"
-                        style="border-top-left-radius: 2px; font-size: 10px"
-                      >
-                        <span>{{ $t("Total") }}</span>
-                      </v-tab>
-                      <v-tab
-                        href="#tab-2nd"
-                        class="primary--text tab-divider"
-                        style="font-size: 10px"
-                      >
-                        <span>{{ $t("Linked") }}</span>
-                      </v-tab>
-                      <v-tab
-                        href="#tab-3rd"
-                        class="primary--text tab-divider"
-                        style="border-top-right-radius: 2px; font-size: 10px"
-                      >
-                        <span>{{ $t("Unlinked") }}</span>
-                      </v-tab>
-                    </v-tabs>
-                  </template>
+                <v-card class="sideTab">
+                  <v-tabs
+                    v-model="tab"
+                    hide-slider
+                    active-class="activeTab"
+                  >
+                    <v-tab
+                      v-for="item in items"
+                      :key="item.tab"
+                    >
+                      {{ item.tab }}
+                    </v-tab>
+                  </v-tabs>
 
-                  <v-tabs-items v-model="tab" style="width: 100%">
+                  <v-tabs-items v-model="tab">
                     <v-tab-item
-                      :value="'tab-1st'"
-                      :transition="false"
-                      :reverse-transition="false"
-                      v-if="tab === 'tab-1st'"
-                      style=""
+                      v-for="item in items"
+                      :key="item.tab"
                     >
-                      <v-data-table
-                        item-key="data"
-                        v-model="tab"
-                        :headers="tableHeader"
-                        show-select
-                        :items="table"
-                        grow
-                        :single-select="true"
-                        style="width: 100%"
-                        :hide-default-footer="true"
-                        :dense="false"
-                        class="tbl-type04 tableMenu"
-                      >
-                        <template slot="no-data">
-                          <p>
-                            {{ $t("No data available") }}
-                          </p>
-                        </template>
-                      </v-data-table>
-                    </v-tab-item>
-                    <v-tab-item
-                      :value="'tab-2nd'"
-                      :transition="false"
-                      :reverse-transition="false"
-                      v-if="tab === 'tab-2nd'"
-                    >
-                      <h7></h7>
-                    </v-tab-item>
-                    <v-tab-item
-                      :value="'tab-3rd'"
-                      :transition="false"
-                      :reverse-transition="false"
-                      v-if="tab === 'tab-3rd'"
-                    >
+                      <v-card flat class="tabContent">
+                        <v-card-text><component v-bind:is="item.content"></component></v-card-text>
+                      </v-card>
                     </v-tab-item>
                   </v-tabs-items>
-                </v-toolbar>
+                </v-card>
                 <p
                   style="
                     text-align: right;
                     font-size: 15px;
                     font-weight: bolder;
-                    margin-top: 5px;
+                    margin-top: 175px;
                   "
                 >
                   Total 1473
@@ -194,86 +147,28 @@
   </div>
 </template>
 <script>
-// import Panzoom from '@panzoom/panzoom'
-// import TableComponent from './Pages/LbsComponent/TableComponent'
+import Total from '@/lbs/components/Tabs/Total.vue'
+import Linked from '@/lbs/components/Tabs/Linked.vue'
+import Unlinked from '@/lbs/components/Tabs/Unlinked.vue'
 export default {
-  name: 'shelfLocation',
-  // component: {
-  //   'table-component': TableComponent
-  // },
+  components: {
+    Total,
+    Linked,
+    Unlinked
+  },
   data () {
     return {
+      tab: null,
       floorItem: [],
       selectedfloor: null,
-      items: ['Low Battery', 'Bad Signal', 'Time out'],
-      tab: null,
       row: null,
       zoom: 1,
-      table: [
-        {
-          data: 'Meredith '
-        },
-        {
-          data: 'Lilly '
-        },
-        {
-          data: 'Mcclain '
-        },
-        {
-          data: 'Rosario '
-        },
-        {
-          data: 'Marilyn '
-        }
+      items: [
+        { tab: 'Total', content: Total },
+        { tab: 'Linked', content: Linked },
+        { tab: 'Unlinked', content: Unlinked }
       ]
     }
-  },
-  computed: {
-    tableHeader () {
-      return [
-        // {
-        //   text: this.$t('#'),
-        //   value: '',
-        //   sortable: false,
-        //   align: 'center',
-        //   width: '85px'
-        // },
-        {
-          text: this.$t(''),
-          value: 'data',
-          sortable: false,
-          align: 'center',
-          width: '100%'
-        },
-        {
-          text: this.$t(''),
-          value: '',
-          sortable: false,
-          align: 'center',
-          width: '100%'
-        }
-      ]
-    }
-  },
-  mounted () {
-    this.getfloordata()
-    // this.panzoom = Panzoom(document.getElementById('panzoom-element'), {
-    //   maxScale: 5
-    // })
-  },
-  methods: {
-    getfloordata () {
-      this.selectedfloor = { value: 'B2F' }
-      this.floorItem = [
-        { value: 'B2F' },
-        { value: '2F' },
-        { value: '1F' },
-        { value: 'B1F' }
-      ]
-    }
-    // zoomIn (level) {
-    //   level === -1 ? this.panzoom.zoomOut() : this.panzoom.zoomIn()
-    // }
   }
 }
 </script>
@@ -291,6 +186,7 @@ export default {
 }
 .select_store_box {
   width: 20%;
+  margin: 10px;
 }
 .image {
   margin-top: 4%;
@@ -347,5 +243,56 @@ export default {
 .v-image.v-responsive.theme--light{
   margin-left: -1px;
   margin-top: -1px;
+}
+.v-card.v-card--flat.v-sheet.theme--light{
+  overflow-x: hidden;
+    overflow-y: auto;
+    height: auto!important;
+    min-height: 450px;
+}
+table.v-table tbody td, table.v-table tbody th {
+    height: 10px;
+}
+.v-data-table.theme--light {
+    margin-left: -15px;
+}
+.theme--light.v-tabs > .v-tabs-bar .v-tab:not(.v-tab--active) {
+  background: #e2e2e2 !important;
+  font-weight: 900;
+  border: 1px solid #b9adad!important;
+  border-radius: 0px 10px 0px 0px;
+}
+.theme--light.v-tabs > .v-tabs-bar .v-tab--active {
+  border-right: 3px solid #d41515;
+  background-color: #ffffff;
+  font-weight: 900;
+  border: 1px solid #b9adad!important;
+  border-radius: 5px 5px 0px 0px;
+  border-bottom: 0px!important;
+}
+
+.v-tab{
+  font-size: 10px;
+}
+.tabContent{
+    border: 1px solid #b9adad!important;
+    border-top: 0px!important;
+    border-radius: 0px 0px 5px 5px;
+    margin-top: -8px;
+}
+.sideTab{
+  margin: 20px 0;
+}
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+::-webkit-scrollbar {
+    width: 0;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+    background: #FF0000;
 }
 </style>

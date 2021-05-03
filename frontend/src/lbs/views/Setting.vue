@@ -1,17 +1,22 @@
 <template>
   <div>
-    <v-card style="border-radius: 10px">
+    <v-card style="border-radius: 10px; margin: 15px">
       <v-toolbar flat>
         <template v-slot:extension>
-          <v-tabs v-model="tab" grow style="margin-top: -135px">
+          <v-tabs
+            v-model="tab"
+            grow
+            style="margin-top: -135px"
+            :hide-slider="true"
+            :center-active="true"
+            :active-class="true"
+
+          >
             <v-tabs-slider></v-tabs-slider>
             <v-tab
               href="#tab-1st"
               class="primary--text tab-divider"
-              style="
-                border-top-left-radius: 10px;
-                border-bottom: 2px solid #fff !important;
-              "
+              style="border-top-left-radius: 10px"
             >
               <span>{{ $t("STORE HISTORY") }}</span>
             </v-tab>
@@ -107,16 +112,21 @@ export default {
 }
 .v-application .primary--text {
   color: var(--v-primary-base) !important;
-  caret-color: var(--v-primary-base) !important;
+  caret-color: #ffffff !important;
 }
 .theme--light.v-tabs > .v-tabs-bar .v-tab:not(.v-tab--active) {
   background: #e2e2e2 !important;
+}
+.theme--light.v-tabs > .v-tabs-bar .v-tab--active {
+  border-right: 3px solid #ccd2d7;
 }
 .theme--light.v-tabs > .v-tabs-bar .v-tab {
   min-height: 0px !important;
   left: 0px !important;
   min-width: 0px !important;
   border: none !important;
+  font-size: 15px;
+  font-weight: 900;
 }
 .theme--light.v-tabs-items {
   background-color: white !important;
