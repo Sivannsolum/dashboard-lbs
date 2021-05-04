@@ -312,10 +312,10 @@ export default {
 .map-design-selection {
   background: transparent;
   height: 400px;
-  margin-left: 246px;
   margin-top: -140px;
   width: 117px;
   position: absolute;
+  margin-left: 257px;
 }
 .checkboxes {
   margin-bottom: 15px;
