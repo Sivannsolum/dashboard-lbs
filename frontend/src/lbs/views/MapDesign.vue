@@ -4,7 +4,7 @@
     <v-row no-gutters>
       <v-col cols="12" sm="9">
         <v-card class="pa-2" style="border:none !important" outlined tile>
-           <div class="select_store_box">
+           <!-- <div class="select_store_box">
           <h4 ref="company" class="select_article is-complete">
             {{ $t("Floor") }}
           </h4>
@@ -23,7 +23,8 @@
               solo
             ></v-select>
           </div>
-        </div>
+        </div> -->
+                  <SelectFloor />
 <div id="panzoom-element" class="">
    <div style="position: relative;display:block" >
     <v-img  style="width:80px;height:80px;position:absolute;left:90%;" src="@/assets/img/plus.png"></v-img>
@@ -91,7 +92,6 @@
    </v-card-text> -->
    <v-card-text style="padding:0px !important">
         <v-btn style="justify-content:left !important;border-bottom:1px solid gray !important"  block  x-large v-for="items in FloorDetails" :key='items.value'>
-
           {{items.value}}
         </v-btn>
       </v-card-text>
@@ -109,9 +109,10 @@
 </template>
 <script>
 import addzone from './modal/Addzone'
+import SelectFloor from '@/lbs/components/SelectFloor.vue'
 export default {
   name: 'management',
-  components: { addzone },
+  components: { addzone, SelectFloor },
   data () {
     return {
       floorItem: [],
@@ -192,5 +193,9 @@ margin-left: -30px ! important;
 }
 .btn{
 width:100% ! important;
+}
+.v-image.v-responsive.theme--light {
+    margin-top: -68px;
+    margin-left: -20px;
 }
 </style>

@@ -3,7 +3,7 @@
       <v-container class="grey lighten-5">
          <v-row no-gutters>
             <v-col cols="12" sm="9" style="">
-               <v-card class="pa-2" outlined tile height="700px">
+               <v-card class="pa-2" style="border:none !important" outlined tile>
                   <SelectFloor />
                   <div id="panzoom-element" class="">
                      <div style="position: relative; ">
@@ -199,7 +199,7 @@ export default {
     background-color: #ffffff !important;
 }
 
-.lighten-5 {
+/* .lighten-5 {
     padding: 0!important;
 }
 
@@ -210,7 +210,7 @@ export default {
 .v-image.v-responsive.theme--light {
     margin-left: -1px;
     margin-top: -1px;
-}
+} */
 
 .v-card.v-card--flat.v-sheet.theme--light {
     overflow-x: hidden;
@@ -276,5 +276,8 @@ html {
 ::-webkit-scrollbar-thumb {
     background: #FF0000;
 }
-
+.v-image.v-responsive.theme--light {
+    margin-top: -12px;
+    margin-left: -20px;
+}
 </style>

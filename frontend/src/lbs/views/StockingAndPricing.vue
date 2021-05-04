@@ -3,8 +3,8 @@
     <v-container class="grey lighten-5">
       <v-row no-gutters>
         <v-col cols="12" sm="9" style="">
-          <v-card class="pa-2" outlined tile height="700px">
-            <div class="select_store_box">
+          <v-card class="pa-2" style="border:none !important" outlined tile>
+            <!-- <div class="select_store_box">
               <h4 ref="company" class="select_article is-complete">
                 {{ $t("Floor") }}
               </h4>
@@ -23,7 +23,8 @@
                   solo
                 ></v-select>
               </div>
-            </div>
+            </div> -->
+            <SelectFloor />
             <div id="panzoom-element" class="">
               <div style="position: relative">
                 <v-img
@@ -32,6 +33,7 @@
                     height: 80px;
                     position: absolute;
                     left: 90%;
+                    z-index: 1;
                   "
                   src="@/assets/img/plus.png"
                 ></v-img>
@@ -44,15 +46,19 @@
                     height: 80px;
                     position: absolute;
                     left: 90%;
+                    z-index: 1;
                   "
                   src="@/assets/img/minus.png"
                 ></v-img>
               </div>
               <div>
                 <v-img
-                  style="position: absolute; top: 50px"
+                  style="
+    position: absolute;
+    top: -10px;
+    margin-left: -15px;"
                   max-height="700"
-                  max-width="750"
+                  max-width="685"
                   src="@/assets/img/map.png"
                 ></v-img>
               </div>
@@ -71,14 +77,14 @@
               <v-tab href="#FirstTab"><b>STOCKING</b></v-tab>
               <v-tab href="#SecondTab"><b>PRICING</b></v-tab>
             </v-tabs>
-            <v-tabs-items v-model="tab">
+            <v-tabs-items v-model="tab" style="min-height: 640px;">
               <v-tab-item
                 :value="'FirstTab'"
                 :transition="false"
                 :reverse-transition="false"
               >
                 <v-card color="basil" flat>
-                  <v-btn class="startBtnAlign" text>{{
+                  <v-btn class="startBtnAlign" text color="white">{{
                     $t("Start Location Set")
                   }}</v-btn>
                   <div class="labelText"><b>ZONE PRIORITY</b></div>
@@ -91,19 +97,22 @@
                   <v-btn class="btn type-search" text>{{ $t("Search") }}</v-btn>
                   <v-card
                     width="100%"
-                    style=" margin-bottom:20px"
-                    height="330px"
+                    style=" margin-bottom:40px"
+                    height="340px"
                   >
-                    <v-simple-table height="325px"  dense class="stokesTable">
+                    <v-simple-table height="340px"  dense class="stokesTable">
                       <template v-slot:default>
                         <tbody>
                           <tr v-for="item in tableItem" :key="item.id">
                             <td>{{ item.id }}</td>
-                            <div style="width: 100%; height:40px; padding-left: 40px; padding-top:7px; float:left">
-                            <td style="">{{ item.name }}</td>
+                            <div style="width: 100%; height:40px; padding-left: 0px; padding-top:7px; float:left">
+                            <td style="font-size: 14px;">{{ item.name }}</td>
                             </div>
                             <div></div>
-                            <td>#</td>
+                            <td>
+                              <v-icon>mdi-menu-up</v-icon>
+                            <v-icon @click="close(item.prefix)">mdi-menu-down</v-icon>
+                            </td>
                           </tr>
                         </tbody>
                       </template>
@@ -133,11 +142,10 @@
 <script>
 // import Panzoom from '@panzoom/panzoom'
 // import TableComponent from './Pages/LbsComponent/TableComponent'
+import SelectFloor from '@/lbs/components/SelectFloor.vue'
 export default {
   name: 'StockingAndPricing',
-  //   component: {
-  //     ExpandLessIcon: ExpandLessIcon
-  //   },
+  components: { SelectFloor },
   data () {
     return {
       floorItem: [],
@@ -149,7 +157,7 @@ export default {
       tableItem: [
         {
           id: 1,
-          name: 'Meredith '
+          name: 'Toy & Doll '
         },
         {
           id: 2,
@@ -184,35 +192,35 @@ export default {
           text: this.$t(''),
           value: 'data',
           sortable: false,
-          align: 'center',
+          align: 'left',
           width: '100%'
         },
         {
           text: this.$t(''),
           value: '',
           sortable: false,
-          align: 'center',
+          align: 'left',
           width: '100%'
         }
       ]
     }
   },
   mounted () {
-    this.getfloordata()
+    // this.getfloordata()
     // this.panzoom = Panzoom(document.getElementById('panzoom-element'), {
     //   maxScale: 5
     // })
   },
   methods: {
-    getfloordata () {
-      this.selectedfloor = { value: 'B2F' }
-      this.floorItem = [
-        { value: 'B2F' },
-        { value: '2F' },
-        { value: '1F' },
-        { value: 'B1F' }
-      ]
-    }
+    // getfloordata () {
+    //   this.selectedfloor = { value: 'B2F' }
+    //   this.floorItem = [
+    //     { value: 'B2F' },
+    //     { value: '2F' },
+    //     { value: '1F' },
+    //     { value: 'B1F' }
+    //   ]
+    // }
     // zoomIn (level) {
     //   level === -1 ? this.panzoom.zoomOut() : this.panzoom.zoomIn()
     // }
@@ -302,5 +310,9 @@ export default {
 }
 .stokesTable td {
   border-bottom: none !important;
+}
+button.v-icon.notranslate.v-icon--link.mdi.mdi-menu-down.theme--light{
+  margin-top: 12px;
+  margin-left: -19px;
 }
 </style>

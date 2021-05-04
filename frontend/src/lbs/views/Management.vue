@@ -2,9 +2,9 @@
   <div>
     <v-container class="grey lighten-5">
       <v-row no-gutters>
-        <v-col cols="12" sm="9" style="">
+        <v-col cols="12" sm="8" style="">
           <v-card class="pa-2" style="border: none !important" outlined tile>
-            <div class="select_store_box">
+            <!-- <div class="select_store_box">
               <h4 ref="company" class="select_article is-complete">
                 {{ $t("Floor") }}
               </h4>
@@ -23,8 +23,8 @@
                   solo
                 ></v-select>
               </div>
-            </div>
-
+            </div> -->
+<SelectFloor />
             <div id="panzoom-element">
               <div style="position: relative; display: block">
                 <v-img
@@ -54,8 +54,8 @@
           </v-card>
         </v-col>
 
-        <v-col cols="12" sm="3">
-          <v-card class="pa-6" outlined>
+        <v-col cols="12" sm="4">
+          <v-card class="pa-2" outlined>
             <v-tabs
               v-model="tab"
               background-color="transparent"
@@ -72,7 +72,7 @@
                 :reverse-transition="false"
               >
                 <v-card color="basil" flat>
-                  <v-radio-group v-model="row" row>
+                  <v-radio-group v-model="row" row dense class="radioGroup">
                     <v-radio label="Product" value="radio-1"></v-radio>
                     <v-radio label="Label & GW" value="radio-2"></v-radio>
                     <v-radio label="Shelf" value="radio-2"></v-radio>
@@ -110,7 +110,7 @@
                 :reverse-transition="false"
               >
                 <v-card color="basil" flat>
-                  <v-radio-group v-model="row" row>
+                  <v-radio-group v-model="row" row dense class="radioGroup">
                     <v-radio label="Label" value="radio-1"></v-radio>
                     <v-radio label="Sales" value="radio-2"></v-radio>
                     <v-radio label="Stock" value="radio-2"></v-radio>
@@ -122,7 +122,7 @@
                   ></v-select>
                   <v-btn class="btn type-search" text>{{ $t("Scan") }}</v-btn>
                   <div class="labelText"><b>Legend</b></div>
-                  <v-row row>
+                  <v-row row class="ma-6">
                     <v-col cols="12" md="4">
                       <v-img src="@/assets/img/stable.png"></v-img>
                       <v-row row>
@@ -173,8 +173,12 @@
 </template>
 <script>
 // import Panzoom from '@panzoom/panzoom'
+import SelectFloor from '@/lbs/components/SelectFloor.vue'
 export default {
   name: 'management',
+  components: {
+    SelectFloor
+  },
   data () {
     return {
       floorItem: [],
@@ -233,5 +237,16 @@ export default {
   left: 0px !important;
   min-width: 0px !important;
   border: none !important;
+}
+.v-image.v-responsive.theme--light {
+    margin-top: -68px;
+    margin-left: -20px;
+}
+
+</style>
+<style>
+.radioGroup label.v-label.theme--light {
+    font-size: 12px!important;
+    font-weight: bolder!important;
 }
 </style>

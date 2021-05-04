@@ -375,5 +375,12 @@ export default {
   background: #001E38 !important;
   border: none;
 }
-
+.theme--light.v-tabs > .v-tabs-bar .v-tab{
+  min-height: 216px !important;
+  left: -85px !important;
+  min-width: 216px !important;
+}
+.theme--light.v-tabs > .v-tabs-bar .v-tab:not(.v-tab--active){
+  border: 2px solid #00000033 !important;
+}
 </style>

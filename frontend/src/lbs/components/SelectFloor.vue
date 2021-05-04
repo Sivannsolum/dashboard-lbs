@@ -51,8 +51,8 @@ export default {
 <style scoped>
 .select_store_box {
     width: 20%;
-    margin: 19px;
+    margin: auto;
     position: absolute;
-    z-index: 1;
+    z-index: 10;
 }
 </style>
