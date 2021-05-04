@@ -14,7 +14,7 @@ import Utils from '@/plugins/utils'
 axios.defaults.headers.get['Content-Type'] = 'application/json; charset=utf-8'
 axios.defaults.headers.post['Content-Type'] = 'application/json; charset=utf-8'
 
-require('@/dist/vue-sidebar-menu.css')
+require('vue-sidebar-menu/dist/vue-sidebar-menu.css')
 require('@/assets/css/layout.css')
 require('@mdi/font/css/materialdesignicons.css')
 require('roboto-fontface/css/roboto/roboto-fontface.css')
