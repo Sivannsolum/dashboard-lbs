@@ -49,7 +49,7 @@
                   src="@/assets/img/minus.png"
                 ></v-img>
               </div>
-              <v-img max-height="600" src="@/assets/img/FloorPlan.png"></v-img>
+              <v-img max-height="600" class="floorPlan" src="@/assets/img/FloorPlan.png"></v-img>
             </div>
           </v-card>
         </v-col>
@@ -238,7 +238,7 @@ export default {
   min-width: 0px !important;
   border: none !important;
 }
-.v-image.v-responsive.theme--light {
+.v-image.v-responsive.floorPlan.theme--light {
     margin-top: -68px;
     margin-left: -20px;
 }

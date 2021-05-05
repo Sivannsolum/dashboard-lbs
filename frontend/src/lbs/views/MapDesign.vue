@@ -34,7 +34,7 @@
   </div>
 
   <div >
-   <v-img  max-height="800"   src="@/assets/img/FloorPlan.png"></v-img>
+   <v-img  max-height="800" class="floorPlan"  src="@/assets/img/FloorPlan.png"></v-img>
 
 </div>
 </div>
@@ -194,7 +194,7 @@ margin-left: -30px ! important;
 .btn{
 width:100% ! important;
 }
-.v-image.v-responsive.theme--light {
+.v-image.v-responsive.floorPlan.theme--light {
     margin-top: -68px;
     margin-left: -20px;
 }
