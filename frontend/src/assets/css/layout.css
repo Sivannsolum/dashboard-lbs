@@ -71,7 +71,8 @@ body .wrapper {
 
 /*** 좌측메뉴 ***/
 .navigation {
-  position: relative;
+  position: fixed;
+  /* position: relative; */
   /* width: 280px; */
   width: 320px;
   background: #09263f;
@@ -84,6 +85,7 @@ body .wrapper {
   /* width: calc(100% - 280px); */
   width: calc(100% - 320px);
   padding: 0;
+  margin-left: 320px;
 }
 
 /* 반응형 레이아웃 :공통 */
@@ -112,9 +114,9 @@ body .wrapper {
 /* 로고 : 공통 */
 .logo {
   display: flex;
-  align-items: center;
-  padding-left: 30px;
-  height: 120px;
+  /* align-items: center; */
+  /* padding-left: 30px; */
+  /* height: 120px; */
   font-size: 0;
   background: #001e38;
 }

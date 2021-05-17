@@ -2,7 +2,7 @@
   <div class="wrapper">
     <div class="navigation">
       <h1 class="logo">
-        <img src="@/assets/img/logo.png" alt="solum esl dashboard" />
+        <img src="@/assets/img/cld_dsh_logo.png" alt="solum esl dashboard" />
       </h1>
       <button type="button" class="btn-nav-fold">
         <img src="@/assets/img/expandMenu-small.png" alt="열기" />

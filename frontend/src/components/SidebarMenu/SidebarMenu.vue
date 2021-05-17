@@ -7,24 +7,27 @@
   >
       <v-app id="inspire">
     <v-card>
-      <v-tabs vertical v-model="selectedTab">
-        <router-link to="/">
-        <v-tab>
-          ESL
-        </v-tab>
-        </router-link>
-        <router-link to="/Lbs">
-        <v-tab>
-          LBS
-        </v-tab>
-        </router-link>
-        <v-tab>
-          Touch LCD
-        </v-tab>
-        <v-tab>
-          Store &#38; User
-        </v-tab>
-        <v-tab-item>
+      <v-tabs vertical v-model="selectedTab" :hide-slider="true">
+          <router-link to="/">
+            <v-tab>
+              <span style="margin-left: 30px">ESL</span>
+            </v-tab>
+          </router-link>
+          <router-link to="/Lbs">
+            <v-tab>
+              <span style="margin-left: 50px">LBS</span>
+            </v-tab>
+          </router-link>
+          <v-tab>
+            <span style="margin-left: 50px">LCD</span>
+          </v-tab>
+          <v-tab>
+            <span style="margin-left: 50px">CONFIG</span>
+          </v-tab>
+          <v-tab>
+            <span style="margin-left: 50px">SOLUM</span>
+          </v-tab>
+          <v-tab-item>
           <v-card flat>
             <slot name="header" />
               <div
@@ -376,7 +379,7 @@ export default {
   border: none;
 }
 .theme--light.v-tabs > .v-tabs-bar .v-tab{
-  min-height: 216px !important;
+  min-height: 154px !important;
   left: -85px !important;
   min-width: 216px !important;
 }
